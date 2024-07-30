@@ -45,7 +45,6 @@ export class CompanyComponent {
       this.data.getListCompany().subscribe((ret: any) =>{
         this.objCompany = ret
         this.loader = false
-        console.log(ret)
       })
   }
 
