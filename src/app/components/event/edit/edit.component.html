@@ -1,0 +1,42 @@
+<mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-stroked-button (click)="deleteEvent()">Excluir campanha</button>
+     <div class="spacer"></div>
+      <button mat-button mat-dialog-close>Fechar</button>
+    </mat-dialog-actions>
+
+    <div class="p-2">
+        <mat-label class="fw-bold">Empresa: </mat-label>
+        <span>{{objEdit.social}}</span>
+      </div>
+
+        <mat-form-field appearance="fill" class="full-form">
+          <mat-label>Titulo </mat-label>
+          <input matInput placeholder="Titulo" [maxLength]="50" [(ngModel)]="objEdit.title">
+          <mat-hint>{{objEdit.title?.length}}/50</mat-hint>
+        </mat-form-field>
+
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Data inicial</mat-label>
+          <input matInput type="date"  [(ngModel)]="objEdit.date_start">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Data final</mat-label>
+          <input matInput type="date"  [(ngModel)]="objEdit.date_end">
+        </mat-form-field>
+      </p>
+
+
+      <mat-form-field appearance="fill" class="full-form">
+        <mat-label>Descrição</mat-label>
+         <textarea matInput placeholder="Descrição" [maxLength]="200"  [(ngModel)]="objEdit.description"></textarea>
+        <mat-hint>{{objEdit.description?.length}}/200</mat-hint>
+      </mat-form-field> <br>
+
+
+      <button mat-stroked-button (click)="edit()">Editar</button>
+
+    
+</mat-dialog-content>

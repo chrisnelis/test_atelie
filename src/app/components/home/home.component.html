@@ -1,0 +1,24 @@
+<section>
+    
+    <mat-toolbar>
+    <span>Gerenciamento de campanhas</span>
+  </mat-toolbar>
+
+        <div class="table-main">
+            <mat-tab-group>
+                <mat-tab label="Campanhas">
+                    <app-event></app-event>
+                </mat-tab>
+
+                <!--- Lista de participantes --->
+                <mat-tab label="Participantes" class="text-tab">
+                        <app-participant></app-participant>
+                </mat-tab>
+
+                <mat-tab label="Empresas" class="text-tab">
+                    <app-company></app-company>
+                    
+               </mat-tab>
+            </mat-tab-group>
+       </div>
+</section>

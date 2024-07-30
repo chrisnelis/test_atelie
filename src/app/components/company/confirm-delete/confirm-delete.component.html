@@ -1,0 +1,15 @@
+<mat-dialog-content>
+    <p>Tem certeza que deseja excluir {{objDelete?.social}}?</p>
+    
+    <mat-dialog-actions> 
+        @if(loader){
+            <div class="d-flex justify-content-center">
+                 <span class="progress"></span>
+             </div>
+            }
+        <div *ngIf="!loader">
+            <button mat-button mat-dialog-close>Cancelar</button>
+            <button mat-button (click)="remove()">Confirmar</button>
+        </div>
+    </mat-dialog-actions>
+</mat-dialog-content>

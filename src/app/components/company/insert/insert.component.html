@@ -1,0 +1,48 @@
+<mat-dialog-content>
+    <mat-dialog-actions>
+     <span>Cadastrar empresa/cliente</span>
+     <div class="spacer"></div>
+      <button mat-button mat-dialog-close>Fechar</button>
+    </mat-dialog-actions>
+    
+    <div class="form-card">
+        <mat-form-field appearance="fill" class="full-form">
+          <mat-label>Nome do responsável</mat-label>
+          <input matInput placeholder="Nome do responsável" [maxLength]="50" [(ngModel)]="responsible">
+        </mat-form-field>
+ 
+        <mat-form-field appearance="fill" class="full-form">
+          <mat-label>Telefone</mat-label>
+          <input matInput placeholder="Telefone" [(ngModel)]="phone" mask="(00)0000-0000 || (00)0 0000-0000">
+        </mat-form-field>
+        
+        <mat-form-field appearance="fill" class="full-form">
+          <mat-label>Razão Social</mat-label>
+          <input matInput placeholder="Razão Social" [maxLength]="50" [(ngModel)]="social">
+        </mat-form-field>
+ 
+        <mat-form-field appearance="fill" class="full-form">
+          <mat-label>CNPJ</mat-label>
+          <input matInput placeholder="CNPJ" [(ngModel)]="cnpj" mask="00.000.000/0000-00" (change)="validatecnpj()" (blur)="validatecnpj()">
+        </mat-form-field>
+           
+        <mat-form-field appearance="fill" class="full-form">
+            <mat-label>E-mail</mat-label>
+            <input matInput placeholder="E-mail" [(ngModel)]="email" type="email">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-form">
+            <mat-label>Endereço</mat-label>
+            <input matInput placeholder="Endereço" [(ngModel)]="address" [maxLength]="100" type="text">
+        </mat-form-field>
+   </div> 
+        <div>
+            <button mat-stroked-button (click)="save()" *ngIf="!loader">Salvar</button>
+
+        @if(loader){
+            <div class="d-flex justify-content-center">
+                <span class="progress"></span>
+            </div>
+            }    
+    </div>
+</mat-dialog-content>

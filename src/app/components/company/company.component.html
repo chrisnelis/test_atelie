@@ -1,0 +1,43 @@
+<main>
+    <div class="mt">
+        <button mat-raised-button (click)="insertCompany()"><mat-icon>add</mat-icon> Empresa</button>
+    </div>
+
+    @if(loader){
+        <div class="d-flex justify-content-center">
+             <span class="progress"></span>
+         </div>
+        }
+
+      <div class="box-table">
+      <table class="table mt-4" *ngIf="!loader">
+        <thead>
+          <tr>
+            <th>Nome do responsável</th>
+            <th>Nome Social</th>
+            <th>CNPJ</th>
+            <th>E-mail</th>
+            <th>Telefone</th>
+            <th class="text-center">Editar</th>
+            <th class="text-center">Deletar </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let oC of objCompany">
+            <td>{{oC.name_decider}}</td>
+            <td>{{oC.social}}</td>
+            <td>{{oC.cnpj|mask:"00.000.000/0000-00"}}</td>
+            <td>{{oC.mail}}</td>
+            <td>{{oC.phone | mask: '(00)0000-0000 || (00)0 0000-0000'}}</td>
+            <td class="text-center"> 
+              <button mat-fab class="mat-fab" (click)="editCompany(oC)"><mat-icon>edit</mat-icon></button>
+            </td>
+            <td class="text-center">
+              <button mat-fab (click)="deleteCompany(oC)" class="mat-fab">
+                <mat-icon>delete</mat-icon></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</main>

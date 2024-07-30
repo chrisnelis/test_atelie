@@ -1,0 +1,28 @@
+<mat-dialog-content>
+    <mat-dialog-actions>
+     <span>CPF: {{objEdit.cpf | mask:'000.000.000-00'}}</span>
+     <div class="spacer"></div>
+      <button mat-button mat-dialog-close>Fechar</button>
+    </mat-dialog-actions>
+    
+    <div class="form-card">
+        <mat-form-field appearance="fill" class="full-form">
+          <mat-label>Nome completo</mat-label>
+          <input matInput placeholder="Nome do responsável" [maxLength]="50" [(ngModel)]="objEdit.name_full">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-form">
+            <mat-label>E-mail</mat-label>
+            <input matInput placeholder="E-mail" [(ngModel)]="objEdit.mail" type="email">
+        </mat-form-field>
+   </div> 
+        <div>
+            <button mat-stroked-button (click)="edit()" *ngIf="!loader">Editar</button>
+
+        @if(loader){
+            <div class="d-flex justify-content-center">
+                <span class="progress"></span>
+            </div>
+            }    
+    </div>
+</mat-dialog-content>

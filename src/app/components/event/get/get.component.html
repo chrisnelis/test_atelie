@@ -1,0 +1,51 @@
+<mat-dialog-content>
+    <mat-dialog-actions>
+     <span>Participantes</span>
+     <div class="spacer"></div>
+      <button mat-button mat-dialog-close>Fechar</button>
+    </mat-dialog-actions>
+
+
+<div class="form-full mx-auto">
+    <span>Encontre o participante:</span>
+    <ng-autocomplete [data]="objListPart" placeholder="Clique aqui para selecionar"
+       [searchKeyword]="'name_full'" [itemTemplate]="itemTemplate" (selected)="selectGuest($event)"
+    [notFoundTemplate]="notFoundTemplate">
+  </ng-autocomplete>
+  <ng-template #itemTemplate let-item>
+    <a [innerHTML]="item.name_full"></a>
+  </ng-template>
+  <ng-template #notFoundTemplate let-notFound>
+    <div [innerHTML]="notFound"></div>
+  </ng-template>
+</div>
+
+    @if(loader){
+    <div class="d-flex justify-content-center">
+         <span class="progress"></span>
+     </div>
+    }
+ @if(!loader && objGuestEvent?.length === 0){
+        <p class="mt-4">Nenhum participante cadastrado</p>
+    }
+
+@if(!loader && objGuestEvent?.length > 0){
+<table class="table mt-4" >
+    <thead>
+      <tr>
+        <th scope="col">Nome</th>
+        <th scope="col">Documento</th>
+        <th scope="col">E-mail</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let oG of objGuestEvent">
+        <td>{{oG.name_full}}</td>
+        <td>{{oG.cpf}}</td>
+        <td>{{oG.mail}}</td>
+      </tr>
+    </tbody>
+  </table>
+}
+ 
+</mat-dialog-content>

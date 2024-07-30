@@ -1,0 +1,38 @@
+<main>
+    <div class="mt">
+        <button mat-raised-button (click)="insertParticipant()"><mat-icon>add</mat-icon> Participante</button>
+      </div>
+    
+      @if(loader){
+        <div class="d-flex justify-content-center">
+             <span class="progress"></span>
+         </div>
+        }
+        <div class="box-table">
+      <table class="table mt-4" *ngIf="!loader">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Documento</th>
+            <th>E-mail</th>
+            <th class="text-center">Editar</th>
+            <th class="text-center">Deletar </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let oP of objListPart">
+            <td>{{oP.name_full}}</td>
+            <td>{{oP.cpf|mask:"000.000.000-00"}}</td>
+            <td>{{oP.mail}}</td>
+            <td class="text-center"> 
+              <button mat-fab class="mat-fab" (click)="editParticipant(oP)"><mat-icon>edit</mat-icon></button>
+            </td>
+            <td class="text-center">
+              <button mat-fab (click)="deleteParticipant(oP)" class="mat-fab">
+                <mat-icon>delete</mat-icon></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+   </div>
+</main>

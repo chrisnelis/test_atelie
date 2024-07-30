@@ -1,0 +1,39 @@
+<mat-dialog-content>
+    <mat-dialog-actions>
+     <span>Cadastrar participante</span>
+     <div class="spacer"></div>
+      <button mat-button mat-dialog-close>Fechar</button>
+    </mat-dialog-actions>
+
+    <p>
+        <mat-form-field appearance="fill" class="full-form">
+          <mat-label>Nome completo </mat-label>
+          <input matInput placeholder="Nome completo " [maxLength]="50" [(ngModel)]="name">
+        </mat-form-field>
+    </p>
+    
+    <p>
+        <mat-form-field appearance="fill" class="full-form">
+          <mat-label>CPF</mat-label>
+          <input matInput placeholder="CPF" [(ngModel)]="cpf" mask="000.000.000.-00" (change)="validateCpf()" (blur)="validateCpf()">
+        </mat-form-field>
+    </p>
+    
+    <p>
+        <mat-form-field appearance="fill" class="full-form">
+            <mat-label>E-mail</mat-label>
+            <input matInput placeholder="E-mail" [(ngModel)]="email" type="email">
+        </mat-form-field>
+    </p>
+
+
+
+<button mat-stroked-button (click)="save()" *ngIf="!loader">Salvar</button>
+
+    
+      @if(loader){
+        <div class="d-flex justify-content-center">
+             <span class="progress"></span>
+         </div>
+        }
+</mat-dialog-content>
